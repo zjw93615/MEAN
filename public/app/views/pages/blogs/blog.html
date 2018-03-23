@@ -1,0 +1,42 @@
+<div class="container main-context" ng-controller="blogCtrl as blog">
+  <div ng-hide="blog.blogData">
+    <div class="loader"></div>
+  </div>
+  <div ng-show="blog.blogData">
+    <div class="row">
+      <div class="col-md-12 blog-main" ng-init="blog.getBlog()">
+        <div class="blog-post">
+          <h2 class="blog-post-title">{{blog.blogData.title}}</h2>
+          <p class="blog-post-meta">{{blog.blogData.timestamp|date:"MMMM d yyyy H:mm"}} <a href="">{{blog.blogData.username}}</a></p>
+          <p>{{blog.blogData.summary}}</p>
+          <hr>
+          <div ng-bind-html="blog.blogData.body"></div>
+        </div><!-- /.blog-post -->
+      </div><!-- /.blog-main -->
+    </div><!-- /.row -->
+    <hr>
+    <div class="row pl-3">
+      <h2>{{blog.commentsData.title}}</h2>
+    </div>
+    <div class="row">
+      <ul class="list-unstyled col-12">
+        <div ng-repeat="comment in blog.commentsData.replies" ng-init="reply=false;replySubject='';replyBody=''">
+          <div class="comment" ng-include="'app/views/pages/blogs/comment.html'"></div>
+        </div>
+      </ul>
+    </div>
+    <div class="row">
+      <form class="col-12">
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" class="form-control" id="subject" ng-model="replySubject"></input>
+        </div>
+        <div class="form-group">
+          <label for="comment">Comment</label>
+          <textarea class="form-control" id="comment" ng-model="replyBody"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" ng-click="blog.addReply(blog.commentsData._id,replySubject,replyBody)">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

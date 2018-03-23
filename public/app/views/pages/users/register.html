@@ -1,0 +1,84 @@
+<!-- Can Be Deleted -->
+
+<link rel="stylesheet" type="text/css" href="assets/css/signin.css">
+<div class="show-hide-message" ng-show="main.successMsg">
+  <div class="alert alert-success">{{ main.successMsg }}</div>
+</div>
+<div class="show-hide-message" ng-show="main.errorMsg">
+  <div class="alert alert-danger">{{ main.errorMsg }}</div>
+</div>
+<div class="loading" ng-show="main.loading">
+  <img src ="assets/imgs/loading.gif" align="middle">
+</div>
+
+<div class="show-hide-message" ng-show="register.successMsg">
+  <div class="alert alert-success">{{ register.successMsg }}</div>
+</div>
+<div class="show-hide-message" ng-show="register.errorMsg">
+  <div class="alert alert-danger">{{ register.errorMsg }}</div>
+</div>
+<div class="loading" ng-show="register.loading">
+  <img src ="assets/imgs/loading.gif" align="middle">
+</div>
+
+<div class="panel-heading">
+  <div class="row">
+    <img class="col-12" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="panel-title col-12 h3 mb-3 font-weight-normal">User Login</h1>
+  </div>
+  <div class="row panel-label">
+    <div class="col-6">
+      <a href="#" class="active" id="login-form-link">Login</a>
+    </div>
+    <div class="col-6">
+      <a href="#" id="register-form-link">Register</a>
+    </div>
+  </div>
+  <hr>
+</div>
+<div id="login-form" class="form-body" style="display: none;">
+  <form class="form-signin" ng-submit="main.doLogin(loginData)">
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input type="text" id="loginUsername" class="form-control" placeholder="Username" required autofocus ng-model="main.loginData.username">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="loginPassword" class="form-control" placeholder="Password" required ng-model="main.loginData.password">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+  </form>
+</div>
+
+<div id="register-form" class="form-body" style="display: block;">
+  <form class="form-signin" ng-submit="register.regUser(regData)">
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input type="text" id="regUsername" class="form-control" placeholder="Username" required autofocus ng-model="register.regData.username">
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" id="regEmail" class="form-control" placeholder="Email address" ng-model="register.regData.email">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="regPassword" class="form-control" placeholder="Password" ng-model="register.regData.password">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+  </form>
+</div>
+
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    jQuery('#login-form-link').click(function(e) {
+      jQuery("#login-form").delay(100).fadeIn(100);
+      jQuery("#register-form").fadeOut(100);
+      jQuery('#register-form-link').removeClass('active');
+      jQuery('.panel-title').text('User Login');
+      jQuery(this).addClass('active');
+      e.preventDefault();
+    });
+    jQuery('#register-form-link').click(function(e) {
+      jQuery("#register-form").delay(100).fadeIn(100);
+      jQuery("#login-form").fadeOut(100);
+      jQuery('#login-form-link').removeClass('active');
+      jQuery('.panel-title').text('Please Sign Up');
+      jQuery(this).addClass('active');
+      e.preventDefault();
+    });
+  });
+</script>
+
+

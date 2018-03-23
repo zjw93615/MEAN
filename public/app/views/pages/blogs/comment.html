@@ -1,0 +1,28 @@
+<li class="media w-100 px-3 pt-3 pb-1 mb-2 border rounded">
+  <img class="mr-3 rounded-circle" src="http://via.placeholder.com/65x65" alt="Generic placeholder image">
+  <div class="media-body">
+    <h5 class="mt-0 mb-1">{{comment.subject}}</h5>
+    <p class="small comment-meta">{{comment.username}} posted {{comment.timestamp|date:"MMMM d yyyy H:mm"}}</p>
+    <p>{{comment.body}}</p>
+    <p><a href="" class="text-right small" ng-show="reply==false" ng-click="reply=true"><i class="ion-reply"></i> Reply</a></p>
+    <form class="col-12" ng-if="reply">
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" class="form-control" id="subject" ng-model="replySubject"></input>
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea class="form-control" id="comment" ng-model="replyBody"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" ng-click="blog.addReply(comment._id,replySubject,replyBody)">Submit</button>
+    </form>
+    <br ng-show="reply==true">
+    <p><a href="" class="text-right small" ng-show="reply==true" ng-click="reply=false"><i class="ion-reply"></i> Cancel</a></p>
+    <ul class="list-unstyled">
+      <div ng-repeat="comment in comment.replies" ng-init="reply=false;replySubject='';replyBody=''">
+        <div class="comment" ng-include="'app/views/pages/blogs/comment.html'"></div>
+      </div>
+    </ul>
+  </div>
+  
+</li>

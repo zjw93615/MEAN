@@ -1,0 +1,48 @@
+<!-- <script>
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+
+    CKEDITOR.replace( 'editor');
+</script> -->
+<div ng-controller="blogCtrl as blog">
+  <div class="loading-bg" ng-show="blog.submitting">
+    <div class="loader"></div>
+  </div>
+  <div class="container main-context">
+    <div class="row">
+      <div class="col-12">
+        <form ng-submit="blog.postBlog(blogData)">
+          <div class="form-group row">
+            <label for="inputUsername" class="col-sm-2 col-form-label">Author</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputUsername" ng-model="main.username" readonly required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputTitle" ng-model="blogData.title" required autofocus>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputSummary" class="col-sm-2 col-form-label">Summary</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputSummary" ng-model="blogData.summary" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="editor" class="col-sm-2 col-form-label">Body</label>
+            <div class="col-sm-10">
+              <textarea data-ck-editor name="content" id="editor" ng-model="blogData.body" required></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

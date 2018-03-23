@@ -1,0 +1,80 @@
+<div class="container-full-screen">
+  <div class="fb-profile">
+    <img align="left" class="fb-image-lg" src="http://www.pleasecometoourawesomewedding.com/images/scenic.jpg" alt="Profile image example"/>
+    <img align="left" class="rounded-circle border fb-image-profile thumbnail" src="http://lorempixel.com/180/180/people/9/" alt="Profile image example"/>
+    <div class="fb-profile-text">
+      <h1>{{main.username}}</h1>
+      <p>{{main.email}}</p>
+    </div>
+  </div>
+</div>
+<div class="container table-container" ng-controller="blogCtrl as blog" ng-init="blog.getUserBlogs()">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Titile</th>
+        <th scope="col">Time</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="userblog in blog.userblogs">
+        <th scope="row">{{userblog.title}}</th>
+        <td>{{userblog.timestamp|date:"MMMM d yyyy H:mm"}}</td>
+        <td>
+            <button type="button" class="btn btn-info">Read</button>
+            <button type="button" class="btn btn-primary" ng-if="blog.isme">Edit</button>
+            <button type="button" class="btn btn-danger" ng-if="blog.isme">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<style>
+/* ==========================================================================
+  Author's custom styles
+  ========================================================================== */
+
+body
+{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.table-container{
+  padding-top: 100px;
+}
+
+.container-full-screen{
+  width: 100%;
+}
+
+.fb-profile img.fb-image-lg{
+    z-index: 0;
+    width: 100%;  
+    margin-bottom: 10px;
+}
+
+.fb-image-profile
+{
+    margin: -90px 10px 0px 50px;
+    z-index: 9;
+    width: 20%; 
+}
+
+@media (max-width:768px)
+{
+    
+.fb-profile-text>h1{
+    font-weight: 700;
+    font-size:16px;
+}
+
+.fb-image-profile
+{
+    margin: -45px 10px 0px 25px;
+    z-index: 9;
+    width: 20%; 
+}
+}
+</style>

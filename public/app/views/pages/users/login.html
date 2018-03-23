@@ -1,0 +1,85 @@
+<div>
+  <link rel="stylesheet" type="text/css" href="assets/css/signin.css">
+  <div class="show-hide-message" ng-show="main.successMsg">
+    <div class="alert alert-success">{{ main.successMsg }}</div>
+  </div>
+  <div class="show-hide-message" ng-show="main.errorMsg">
+    <div class="alert alert-danger">{{ main.errorMsg }}</div>
+  </div>
+  <div class="loading-bg" ng-show="main.loading">
+    <div class="loader"></div>
+  </div>
+
+  <div class="show-hide-message" ng-show="facebook.errorMsg">
+    <div class="alert alert-danger">{{ facebook.errorMsg }}</div>
+  </div>
+
+  <div class="show-hide-message" ng-show="twitter.errorMsg">
+    <div class="alert alert-danger">{{ twitter.errorMsg }}</div>
+  </div>
+
+  <div class="panel-heading">
+    <div class="row">
+      <img class="col-12" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+      <h1 class="panel-title col-12 h3 mb-3 font-weight-normal">User Login</h1>
+    </div>
+    <div class="row panel-label">
+      <div class="col-6">
+        <a href="#" class="active" id="login-form-link" ng-click="main.cleanMsg()">Login</a>
+      </div>
+      <div class="col-6">
+        <a href="#" id="register-form-link" ng-click="main.cleanMsg()">Register</a>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div id="login-form" class="form-body" style="display: block;">
+    <form class="form-signin" ng-submit="main.doLogin(loginData)">
+      <label for="inputUsername" class="sr-only">Username</label>
+      <input type="text" id="loginUsername" class="form-control" placeholder="Username" required autofocus ng-model="main.loginData.username">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="loginPassword" class="form-control" placeholder="Password" required ng-model="main.loginData.password">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    </form>
+  </div>
+  <div id="register-form" class="form-body" style="display: none;">
+    <form class="form-signin" ng-submit="main.regUser(regData)">
+      <label for="inputUsername" class="sr-only">Username</label>
+      <input type="text" id="regUsername" class="form-control" placeholder="Username" required autofocus ng-model="main.regData.username">
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" id="regEmail" class="form-control" placeholder="Email address" ng-model="main.regData.email">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="regPassword" class="form-control" placeholder="Password" ng-model="main.regData.password">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    </form>
+  </div>
+  <div class="panel">
+    <div class="row-6">
+      <button target="_black" class="fa fa-facebook" ng-click="main.facebook()"></button>
+      <button target="_black" class="fa fa-twitter" ng-click="main.twitter()"></button>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    jQuery('#login-form-link').click(function(e) {
+      jQuery("#login-form").delay(100).fadeIn(100);
+      jQuery("#register-form").fadeOut(100);
+      jQuery('#register-form-link').removeClass('active');
+      jQuery('.panel-title').text('User Login');
+      jQuery(this).addClass('active');
+      e.preventDefault();
+    });
+    jQuery('#register-form-link').click(function(e) {
+      jQuery("#register-form").delay(100).fadeIn(100);
+      jQuery("#login-form").fadeOut(100);
+      jQuery('#login-form-link').removeClass('active');
+      jQuery('.panel-title').text('Please Sign Up');
+      jQuery(this).addClass('active');
+      e.preventDefault();
+    });
+  });
+</script>
